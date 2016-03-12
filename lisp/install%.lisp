@@ -12,7 +12,6 @@
 
 (ql:quickload '(:cl-html-parse :simple-date-time :split-sequence) :silent t)
 
-#-ros.util
 (ros:util)
 
 (defpackage :ros.install

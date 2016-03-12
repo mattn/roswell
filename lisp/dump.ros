@@ -4,7 +4,6 @@
 exec ros -- $0 "$@"
 |#
 
-#-ros.util
 (ros:util)
 
 (defpackage :ros.dump

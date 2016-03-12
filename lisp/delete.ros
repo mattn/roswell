@@ -7,7 +7,6 @@ exec ros +Q -m roswell -L sbcl-bin -- $0 "$@"
 (when (cl:find-package :ros.sub.delete)
   (push :ros.sub.delete *features*))
 
-#-ros.util
 (ros:util)
 
 #-ros.sub.delete
