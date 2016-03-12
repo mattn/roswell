@@ -154,10 +154,9 @@ have the latest asdf, and this file has a workaround for this.
         t))))
 
 (defun util (&optional (name "util"))
-  (unless (find (concatenate 'string "ROS." (string-upcase name)) *features* :test #'string=)
-    (cl:load (make-pathname
-              :defaults #.*load-pathname*
-              :name name :type "lisp"))))
+  (cl:load (make-pathname
+            :defaults #.*load-pathname*
+            :name name :type "lisp")))
 
 (defun lock-path (name)
   (unless (stringp name)
