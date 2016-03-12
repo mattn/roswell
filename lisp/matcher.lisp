@@ -13,11 +13,6 @@
 
 ;;; following 3 definitions are minimally modified from alexandria
 
-(deftype string-designator ()
-  "A string designator type. A string designator is either a string, a symbol,
-or a character."
-  `(or symbol string character))
-
 (defmacro with-gensyms (names &body forms)
   "Binds each variable named by a symbol in NAMES to a unique symbol around
 FORMS. Each of NAMES must either be either a symbol, or of the form:
@@ -35,7 +30,7 @@ unique symbol the named variable will be bound to."
                        (etypecase name
                          (symbol
                           (values name (symbol-name name)))
-                         ((cons symbol (cons string-designator null))
+                         ((cons symbol (cons (or symbol string character) null))
                           (values (first name) (string (second name)))))
                      `(,symbol (gensym ,string))))
                  names)
