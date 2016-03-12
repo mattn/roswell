@@ -17,10 +17,8 @@ exec ros -Q -L sbcl-bin -m roswell -- $0 "$@"
   (declare (ignorable argv))
   #-win32(ignore-errors
            (require :sb-posix)
-           (let ((gid (sb-posix:getenv "SUDO_GID")))
-             (sb-posix:setgid (parse-integer gid)))
-           (let ((uid (sb-posix:getenv "SUDO_UID")))
-             (sb-posix:setuid (parse-integer uid))))
+           (sb-posix:setgid (parse-integer (sb-posix:getenv "SUDO_GID")))
+           (sb-posix:setuid (parse-integer (sb-posix:getenv "SUDO_UID"))))
   (let ((dir (append (directory (make-pathname :defaults *load-pathname* :name :wild))
                      (directory (merge-pathnames "cmds/*.ros" (homedir))))))
     (unless (ignore-errors
