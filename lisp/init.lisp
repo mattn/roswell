@@ -377,5 +377,4 @@ have the latest asdf, and this file has a workaround for this.
      for i in ext:*args*
      do (cl:eval (cl:read-from-string i))))
 
-(unless (find :ros.init *features*)
-  (push :ros.init *features*))
+(pushnew :ros.init *features*)
