@@ -153,10 +153,13 @@ have the latest asdf, and this file has a workaround for this.
                               (symbol-value symbol)))))
         t))))
 
-(defun util (&optional (name "util"))
-  (cl:load (make-pathname
-            :defaults #.*load-pathname*
-            :name name :type "lisp")))
+(let (loaded)
+  (defun util (&optional (name "util"))
+    (unless (find name loaded :test #'equal)
+      (push name loaded)
+      (cl:load (make-pathname
+                :defaults #.*load-pathname*
+                :name name :type "lisp")))))
 
 (defun lock-path (name)
   (unless (stringp name)
