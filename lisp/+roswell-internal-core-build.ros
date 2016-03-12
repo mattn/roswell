@@ -6,12 +6,10 @@ exec ros -Q -L sbcl-bin -m roswell -- $0 "$@"
 
 (ros:util)
 
-#-ros.sub.internal-core-build
 (defpackage :sub.internal-core-build
   (:use :cl :ros.util))
 (in-package :sub.internal-core-build)
 
-#-ros.sub.internal-core-build
 (defun main (&rest argv)
   (declare (ignorable argv))
   #-win32(ignore-errors
@@ -34,4 +32,3 @@ exec ros -Q -L sbcl-bin -m roswell -- $0 "$@"
 			   " dump output -f roswell")
                    t nil))))
 
-(push :ros.sub.internal-core-build *features*)

@@ -1,6 +1,4 @@
 (cl:in-package :cl-user)
-(when (cl:find-package :ros.util)
-  (push :ros.util *features*))
 
 (defpackage :ros.util
   (:use :cl)

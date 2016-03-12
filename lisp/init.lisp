@@ -370,11 +370,8 @@ have the latest asdf, and this file has a workaround for this.
 
 
 #+clisp
-(unless (find :ros.init *features*)
-  (push :ros.init *features*)
+(ignore-errors
   (loop
      with *package* = (find-package :cl-user)
      for i in ext:*args*
      do (cl:eval (cl:read-from-string i))))
-
-(pushnew :ros.init *features*)
